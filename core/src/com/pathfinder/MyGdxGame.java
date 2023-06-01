@@ -14,13 +14,13 @@ import javax.swing.*;
 
 public class MyGdxGame extends ApplicationAdapter
 {
-	ShapeRenderer shapeRenderer;
-	SpriteBatch batch;
-	BitmapFont font;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batch;
+	private BitmapFont font;
 
-	CityGraph cityGraph;
-	GraphPath<City> cityPath;
-	Agent agent;
+	private CityGraph cityGraph;
+	private GraphPath<City> cityPath;
+	private Agent agent;
 
 	@Override
 	public void create()
@@ -83,16 +83,16 @@ public class MyGdxGame extends ApplicationAdapter
 
 
 		// [Create a 10x10 grid of cities]
-		for(int i = 0; i < 10; i++)
-			for(int j = 0; j < 10; j++)
+		for (int i = 0; i < 10; i++)
+			for (int j = 0; j < 10; j++)
 				cityGraph.addCity(new City(i * 50 + 100, j * 50 + 100, i + "," + j));
 
-		for(int i = 0; i < 10; i++)
-			for(int j = 0; j < 9; j++)
+		for (int i = 0; i < 10; i++)
+			for (int j = 0; j < 9; j++)
 				cityGraph.connectCities(cityGraph.cities.get(i * 10 + j), cityGraph.cities.get(i * 10 + j + 1));
 
-		for(int i = 0; i < 9; i++)
-			for(int j = 0; j < 10; j++)
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 10; j++)
 				cityGraph.connectCities(cityGraph.cities.get(i * 10 + j), cityGraph.cities.get((i + 1) * 10 + j));
 
 		cityPath = cityGraph.findPath(cityGraph.cities.get(0), cityGraph.cities.get(99));
@@ -107,17 +107,20 @@ public class MyGdxGame extends ApplicationAdapter
 		Gdx.gl.glClearColor(.5f, .5f, .5f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		for (Street street : cityGraph.streets) {
+		for (Street street : cityGraph.streets)
+		{
 			street.render(shapeRenderer);
 		}
 
 		// Draw all cities blue
-		for (City city : cityGraph.cities) {
+		for (City city : cityGraph.cities)
+		{
 			city.render(shapeRenderer, batch, font, false);
 		}
 
 		// Draw cities in path green
-		for (City city : cityPath) {
+		for (City city : cityPath)
+		{
 			city.render(shapeRenderer, batch, font, true);
 		}
 
