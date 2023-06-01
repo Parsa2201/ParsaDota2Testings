@@ -15,6 +15,8 @@ public class MyGdxGame extends ApplicationAdapter
 {
 	ShapeRenderer shapeBatch;
 	SpriteBatch batch;
+	SpriteBatch fboBatch;
+	Texture badlogic;
 	FrameBuffer frameBuffer;
 	Ball ball;
 	public OrthographicCamera fboCamera;
@@ -47,8 +49,10 @@ public class MyGdxGame extends ApplicationAdapter
 	public void create()
 	{
 		batch = new SpriteBatch();
+		fboBatch = new SpriteBatch();
 		shapeBatch=new ShapeRenderer();
 		ball = new Ball();
+		badlogic = new Texture("badlogic.jpg");
 
 		screenWidth = Gdx.graphics.getWidth();
 		screenHeight = Gdx.graphics.getHeight();
@@ -74,12 +78,20 @@ public class MyGdxGame extends ApplicationAdapter
 		//start drawing to a small framebuffer, that we will then scale up to create a pixelated effect
 		frameBuffer.begin();
 
+
 		ScreenUtils.clear(0, 0, 0, 0.5f);
 		shapeBatch.begin(ShapeRenderer.ShapeType.Line);
+
 		shapeBatch.setProjectionMatrix(fboCamera.combined);
 		Gdx.gl.glDisable(GL20.GL_BLEND);
 		ball.draw(shapeBatch);
+
 		shapeBatch.end();
+
+		fboBatch.begin();
+		fboBatch.draw(badlogic, 0, 0);
+		fboBatch.end();
+
 
 		frameBuffer.end();
 
