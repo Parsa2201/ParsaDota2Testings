@@ -32,6 +32,8 @@ public class MyGdxGame extends ApplicationAdapter
 		cityGraph = new CityGraph();
 
 
+		// [Create a bunch of cities]
+
 //		City startCity = new City(300, 250, "S");
 //		City bCity = new City(300, 350, "B");
 //		City aCity = new City(200, 350, "A");
@@ -79,6 +81,8 @@ public class MyGdxGame extends ApplicationAdapter
 //		agent = new Agent(cityGraph, cityGraph.cities.get(0));
 //		agent.setGoal(cityGraph.cities.get(cityGraph.cities.size - 1));
 
+
+		// [Create a 10x10 grid of cities]
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
 				cityGraph.addCity(new City(i * 50 + 100, j * 50 + 100, i + "," + j));
