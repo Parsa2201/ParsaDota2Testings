@@ -99,6 +99,7 @@ public class MyGdxGame extends ApplicationAdapter
 		ScreenUtils.clear(0, 0, 0, 1);
 		batch.begin();
 		batch.draw(frameBuffer.getColorBufferTexture(), 20, 20, width, height, 0, 0, 1, 1);
+		ball.drawInformation(batch);
 		batch.end();
 	}
 
