@@ -11,7 +11,7 @@ public class DesktopLauncher {
 
 		// set configurations
 		config.setForegroundFPS(60); // fps
-		config.setTitle("Path Finder");    // title
+		config.setTitle("Client");    // title
 		config.setMaximized(true);   // maximize
 		config.useVsync(true);       // vsync
 
